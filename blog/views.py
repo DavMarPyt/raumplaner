@@ -22,4 +22,7 @@ def home(request):
     return render(request,'blog/home.html',context) #Das wird auf der Website angezeigt --> Blog-Home
 
 def about(request): 
-     return render(request,'blog/about.html', {'title':'About'})#Das wird unter/about angezeigt
+     return render(request,'blog/about.html', {'title':'About'})
+
+
+
