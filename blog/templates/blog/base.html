@@ -10,12 +10,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}"
-	{% if title%}	
-		<title>Raumplaner - {{ title }}</title>
+	{% if title%}
+		<title><img src="https://www.htwsaar.de/wiwi/logo.png" width="200px" height="76px"></title>
 	{% else %}
 		<title><h2>Wilkommen - htw saar Raumplaner</h2></title>
 		<img src="https://www.htwsaar.de/wiwi/logo.png" width="200px" height="76px">
-	{% endif %}	
+	{% endif %}
 </head>
 <body>
 	<header class="site-header">
@@ -32,8 +32,7 @@
 			</div>
 			<!-- Navbar Right Side -->
 			<div class="navbar-nav">
-			  <a class="nav-item nav-link" href="#">Login</a>
-			  <a class="nav-item nav-link" href="#">Register</a>
+				<a class="nav-item nav-link" href="/login">Login</a>
 			</div>
 		  </div>
 		</div>
@@ -45,17 +44,6 @@
 		  {% block content %}{% endblock %}
 		</div>
 		<div class="col-md-4">
-		  <div class="content-section">
-			<h3>Erstregistrierung</h3>
-			<p class='text-muted'>Gib hier deine Daten zur Erstregistrierung ein.
-			  <ul class="list-group">
-				<li class="list-group-item list-group-item-light">Username</li>
-				<li class="list-group-item list-group-item-light">kennung@htw-saarland.de (E-Mail)</li>
-				<li class="list-group-item list-group-item-light">Passwort</li>
-				<li class="list-group-item list-group-item-light">Passwort wiederholen</li>
-			  </ul>
-			</p>
-		  </div>
 		</div>
 	  </div>
 	</main>
