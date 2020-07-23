@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raumbuchung</title>
+</head>
+<body>
+<h1>Raumbuchung</h1>
+<p>{{ message }}</p>
+
+{% if show_form %}
+    <p>Möchten Sie den gewählten Raum wirklich buchen? ({{ space.title }}, {{ date.date|date:"d.m.Y" }}, {{ slot.start|time:"H:i" }} - {{ slot.end|time:"H:i" }})</p>
+    {% if existing is not None %}
+        <p>Ihre bestehende Buchung wird gelöscht ({{ existing.space.title }}, {{ existing.date.date|date:"d.m.Y" }}, {{ existing.slot.start|time:"H:i" }} - {{ existing.slot.end|time:"H:i" }})</p>
+    {% endif %}
+<form action="{% url 'planning:book_space' space.id date.id slot.id %}" method="post">
+{% csrf_token %}
+<fieldset>
+    <input type="radio" id="confirm" name="choice" value="confirm">
+    <label for="confirm"> Ja </label>
+    <input type="radio" id="dismiss" name="choice" value="dismiss">
+    <label for="dismiss"> Nein </label>
+  </fieldset>
+<input type="submit" value="Bestätigen">
+</form>
+{% else %}
+    <a href="{% url 'planning:index' %}">Zurück zur Startseite</a>
+{% endif %}
+
+
+</body>
+</html>

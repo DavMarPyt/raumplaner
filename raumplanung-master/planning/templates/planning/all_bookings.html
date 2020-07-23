@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buchungsübersicht</title>
+</head>
+<body>
+<h1>Alle Buchungen</h1>
+
+{% for booking in bookings %}
+    <br>
+    <div>
+        <div>
+            <span>{{ booking }} </span>
+        </div>
+        <div>
+            <span>Stornieren</span>
+        </div>
+    </div>
+    <hr>
+{% endfor %}
+
+<span><a href="{% url 'planning:index' %}">Zur Startseite</a></span>
+
+</body>
+</html>

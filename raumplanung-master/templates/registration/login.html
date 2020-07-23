@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h1>Login</h1>
+
+  {% if form.errors %}
+    <p>Benutzername oder Passwort falsch</p>
+  {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p>Sie haben nicht die nötigen Berechtigungen für diese Seite.</p>
+        {% else %}
+            <p>Bitte melden Sie sich an um diese Seite aufzurufen.</p>
+        {% endif %}
+    {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+
+</body>
+</html>

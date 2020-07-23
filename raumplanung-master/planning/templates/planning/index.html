@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Übersicht</title>
+</head>
+<body>
+<h1>Übersicht (Räume)</h1>
+
+{% if spaces %}
+    <ul>
+    {% for space in spaces %}
+        <li><a href="{% url 'planning:space' space.id %}">{{ space.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Keine Räume angelegt!</p>
+{% endif %}
+
+<span><a href="{% url 'planning:all_bookings' %}">Zur Buchungsübersicht</a></span>
+
+
+</body>
+</html>

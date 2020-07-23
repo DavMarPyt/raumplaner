@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Raum (Detailansicht)</title>
+</head>
+<body>
+<h1>{{ space.title }} (Detailansicht)</h1>
+<p>Ausstattung: {{ space.equipment }}</p>
+<p>Plätze: {{ space.size }}</p>
+
+{% for detail in details %}
+    <br>
+    <div>
+        <div>
+            <span>{{ detail.date.date|date:"d.m.Y" }}</span> <span>Start: {{ detail.timeslot.start|time:"H:i" }} Ende: {{ detail.timeslot.end|time:"H:i" }}</span>
+        </div>
+        <div>
+            {% if detail.booked %}
+                <span>Belegt</span>
+            {% else %}
+                <span>Frei</span><span> <a href="{% url 'planning:book_space' space.id detail.date.id detail.timeslot.id%}">Jetzt buchen</a></span>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+{% endfor %}
+
+</body>
+</html>
